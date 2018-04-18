@@ -2,7 +2,9 @@ package com.mood;
 
 import javax.jms.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -33,6 +35,9 @@ public class Producer {
         System.out.println("send finish" + num++);
     }
 
-
+    @JmsListener(destination = "out.queue")
+    public void receiveQueue3(String text) {
+        System.out.println("生产者接受消费者3返回的信息" + text);
+    }
 
 }

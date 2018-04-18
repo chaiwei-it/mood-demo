@@ -3,20 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mood-parent</artifactId>
+        <artifactId>mood-dubbo</artifactId>
         <groupId>com.mood</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mood-test</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>test-rest</module>
-        <module>test-jello</module>
-        <module>test-vue</module>
-    </modules>
+    <artifactId>dubbo-user-service</artifactId>
 
 
 </project>

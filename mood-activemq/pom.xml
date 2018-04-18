@@ -13,14 +13,28 @@
 
     <artifactId>mood-activemq</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <packaging>pom</packaging>
 
     <modules>
         <module>activemq-test</module>
+        <module>activemq-queue</module>
+        <module>activemq-topic</module>
     </modules>
 
 
+
+    <dependencies>
+        <dependency>
+            <groupId>com.mood</groupId>
+            <artifactId>mood-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
