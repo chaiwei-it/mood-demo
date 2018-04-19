@@ -15,6 +15,7 @@
         <module>mood-core</module>
         <module>mood-test</module>
         <module>mood-activemq</module>
+        <module>mood-kafka</module>
     </modules>
 
     <parent>
