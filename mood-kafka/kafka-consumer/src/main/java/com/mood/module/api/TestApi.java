@@ -1,11 +1,10 @@
-package com.mood.module.api.user;
+package com.mood.module.api;
 
 
 import com.mood.base.BaseController;
 import com.mood.base.Pager;
 import com.mood.common.HttpCode;
 import com.mood.entity.user.User;
-import com.mood.module.consumer.Producer;
 import com.mood.user.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +21,11 @@ import java.util.List;
  * @time 2018-01-07 下午08:00
  */
 @RestController
-@RequestMapping("/api/{version}/user")
-public class UserApi extends BaseController {
+@RequestMapping("/")
+public class TestApi extends BaseController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private Producer producer;
 
     /**
      * 添加
@@ -57,7 +53,6 @@ public class UserApi extends BaseController {
                           ModelMap modelMap, HttpServletRequest request){
         user.setId(id);
         Integer result = userService.update(user);
-        producer.send(id);
         if(result > 0){
             return setSuccessModelMap(modelMap,user);
         }

@@ -1,10 +1,11 @@
-package com.mood.module.produce;
+package com.mood.module.consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Queue;
 import javax.jms.Topic;
 
 /**
@@ -16,13 +17,20 @@ import javax.jms.Topic;
 
 @Component
 @EnableScheduling
-public class Publisher {
+public class Producer {
 
     @Autowired
     private JmsMessagingTemplate jmsMessagingTemplate;
 
     @Autowired
+    private Queue queue;
+
+    @Autowired
     private Topic topic;
+
+    public void send(String id) {
+        this.jmsMessagingTemplate.convertAndSend(this.queue, id);
+    }
 
     public void release(String id) {
         this.jmsMessagingTemplate.convertAndSend(this.topic, id);

@@ -5,7 +5,7 @@ import com.mood.base.BaseController;
 import com.mood.base.Pager;
 import com.mood.common.HttpCode;
 import com.mood.entity.user.User;
-import com.mood.module.produce.Publisher;
+import com.mood.module.consumer.Publisher;
 import com.mood.user.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

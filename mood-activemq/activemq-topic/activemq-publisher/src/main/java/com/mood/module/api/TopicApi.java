@@ -3,7 +3,7 @@ package com.mood.module.api;
 
 import com.mood.base.BaseController;
 import com.mood.common.HttpCode;
-import com.mood.module.produce.Publisher;
+import com.mood.module.consumer.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
