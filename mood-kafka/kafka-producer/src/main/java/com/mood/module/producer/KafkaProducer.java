@@ -1,4 +1,4 @@
-package com.mood.module.consumer;
+package com.mood.module.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -7,11 +7,14 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
+import java.util.Date;
 import java.util.UUID;
 
 
 /**
- * Created by chai on 2018/4/19.
+ * 应用模块
+ * @author chaiwei
+ * @time 2017-11-25 下午08:00
  */
 @Component
 @EnableScheduling
@@ -23,7 +26,6 @@ public class KafkaProducer {
     @Scheduled(fixedRate = 1000)
     public void send(){
         String message = UUID.randomUUID().toString();
-        ListenableFuture future = kafkaTemplate.send("test", message);
-//        future.addCallback(o -> System.out.println("send-消息发送成功：" + message), throwable -> System.out.println("消息发送失败：" + message));
+        kafkaTemplate.send("test", new Date().toString());
     }
 }

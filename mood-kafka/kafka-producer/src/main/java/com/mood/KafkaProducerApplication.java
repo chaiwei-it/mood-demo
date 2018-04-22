@@ -12,16 +12,16 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @time 2017-11-25 下午08:00
  */
 @SpringBootApplication
-@MapperScan("com.mood.**.dao.mapper")
-public class KafkaConsumerApplication extends SpringBootServletInitializer {
+//@MapperScan("com.mood.**.dao.mapper")
+public class KafkaProducerApplication extends SpringBootServletInitializer {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(KafkaConsumerApplication.class);
-    }
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(KafkaProducerApplication.class);
+//    }
 
     public static void main(String[] args) {
-        SpringApplication.run(KafkaConsumerApplication.class, args);
+        SpringApplication.run(KafkaProducerApplication.class, args);
     }
 
 }

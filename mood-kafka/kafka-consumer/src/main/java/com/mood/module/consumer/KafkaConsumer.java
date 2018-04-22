@@ -17,7 +17,12 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = {"test"})
     public void consumer(String message){
-        System.out.println("监控者1接收到" + message);
+        System.out.println("consumer监控者1接收到" + message);
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }
