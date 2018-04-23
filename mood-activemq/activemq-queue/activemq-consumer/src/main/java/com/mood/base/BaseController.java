@@ -22,6 +22,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 @Controller
 public class BaseController {
 
@@ -39,7 +44,11 @@ public class BaseController {
 		return member;
 	}
 
-	// 获取登录用户id
+	/**
+	 *
+	 * 获取登录用户id
+	 *
+	 */
 	public String getUserId(HttpServletRequest request) {
 		User user = getLoginUser(request);
 		if(user != null) {

@@ -58,7 +58,7 @@ public class LoginApi extends BaseController {
             return setModelMap(modelMap,HttpCode.LOGIN_NEVER_USER);
         }
         //判断用户是否停用
-        if(user.getDelStatus() == 2){
+        if(UserContants.STOPSTATUS.equals(user.getDelStatus())){
             return setModelMap(modelMap,HttpCode.LOGIN_USER_STATE);
         }
         //验证密码是否正确

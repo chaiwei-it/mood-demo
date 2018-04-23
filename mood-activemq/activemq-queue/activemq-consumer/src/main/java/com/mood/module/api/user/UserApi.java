@@ -89,9 +89,9 @@ public class UserApi extends BaseController {
         String userStr = cacheService.get(id).toString();
         JSONObject jsonObject=JSONObject.fromObject(userStr);
         User user=(User)JSONObject.toBean(jsonObject, User.class);
-//        if(user == null){
-//            user = userService.selectById(id);
-//        }
+        if(user == null){
+            user = userService.selectById(id);
+        }
         return setSuccessModelMap(modelMap,user);
     }
 

@@ -4,7 +4,9 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * Created by chai on 2018/4/19.
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
  */
 @Component
 public class KafkaSender {

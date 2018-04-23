@@ -4,6 +4,11 @@ import com.mood.common.HttpCode;
 
 import java.io.Serializable;
 
+/**
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 public class BaseVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

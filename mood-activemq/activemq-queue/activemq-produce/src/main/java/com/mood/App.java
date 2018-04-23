@@ -23,11 +23,6 @@ import javax.jms.Queue;
 @EnableJms
 public class App extends SpringBootServletInitializer {
 
-//    @Bean
-//    public Queue queue() {
-//        return new ActiveMQQueue("sample.queue");
-//    }
-
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(App.class);

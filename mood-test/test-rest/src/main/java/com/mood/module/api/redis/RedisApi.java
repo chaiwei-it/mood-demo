@@ -19,17 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/{version}/redis")
 public class RedisApi extends BaseApi<App> {
 
-//    @Autowired
-//    private CacheService cacheService;
-//
-//    @GetMapping("")
-//    public String getApps(){
-//        cacheService.set("test","123",1000);
-////        cacheService.del("test");
-//        return cacheService.get("test").toString();
-//    }
-
-
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 

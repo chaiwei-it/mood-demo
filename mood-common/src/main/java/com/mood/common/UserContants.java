@@ -16,4 +16,6 @@ public class UserContants {
     //最大错误登录次数
     public static Integer LOGINERRORNUMBER = 3;
 
+    public static Integer STOPSTATUS = 2;
+
 }

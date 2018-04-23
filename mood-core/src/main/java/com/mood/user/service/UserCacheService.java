@@ -1,14 +1,47 @@
 package com.mood.user.service;
 
+import com.mood.entity.user.User;
+
+/**
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 public interface UserCacheService {
 
-//	User get(String key);
-//
-//	void set(String key, User member, int exp);
-//
-//	boolean exists(String key);
-//
-//	void del(String key);
+	/**
+	 * fetch data by rule id
+	 *
+	 * @param key rule id
+	 * @return Result<XxxxDO>
+	 */
+	User get(String key);
+
+	/**
+	 * fetch data by rule id
+	 *
+	 * @param key rule id
+	 * @param member rule id
+	 * @param exp rule id
+	 * @return Result<XxxxDO>
+	 */
+	void set(String key, User member, int exp);
+
+	/**
+	 * fetch data by rule id
+	 *
+	 * @param key rule id
+	 * @return Result<XxxxDO>
+	 */
+	boolean exists(String key);
+
+	/**
+	 * fetch data by rule id
+	 *
+	 * @param key rule id
+	 * @return Result<XxxxDO>
+	 */
+	void del(String key);
 	
 	/**
 	 * 获取用户手机验证码

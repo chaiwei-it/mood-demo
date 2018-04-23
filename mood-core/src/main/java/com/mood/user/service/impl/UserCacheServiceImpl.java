@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 
+/**
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 @Service
 public class UserCacheServiceImpl implements UserCacheService {
 
@@ -24,71 +29,75 @@ public class UserCacheServiceImpl implements UserCacheService {
 	
 	@Autowired
 	private RedisTemplate<String, Long> redisTemplateLong;
-	
+
+	//手机验证码前缀
 	@Value("${phonecodePre}")
-	private String phonecodePre;//手机验证码前缀
-	
+	private String phonecodePre;
+
+	//验证码有效时间20分
 	@Value("${phonecodeExpSeconds}")
-	private String phonecodeExpSeconds;//验证码有效时间20分
-	
+	private String phonecodeExpSeconds;
+
+	//手机获取验证码次数前缀
 	@Value("${phonenumPre}")
-	private String phonenumPre;//手机获取验证码次数前缀
-	
+	private String phonenumPre;
+
+	//手机验证码获取时间前缀
 	@Value("${phonecodeTime}")
-	private String phonecodeTime;//手机验证码获取时间前缀
+	private String phonecodeTime;
 	
 	
 
-//	@Override
-//	public void set(final String key, final User member, final int exp) {
-//		redisTemplate.execute(new RedisCallback<Object>() {
-//			@SuppressWarnings("unchecked")
-//			@Override
-//			public Object doInRedis(RedisConnection connection) throws DataAccessException {
-//				Jackson2JsonRedisSerializer<User> jackson2JsonRedisSerializer = (Jackson2JsonRedisSerializer<User>) redisTemplate
-//						.getValueSerializer();
-//				connection.set(redisTemplate.getStringSerializer().serialize(key),
-//						jackson2JsonRedisSerializer.serialize(member));
-//				if (exp!=0) {
-//					connection.expire(redisTemplate.getStringSerializer().serialize(key), exp);
-//				}
-//				return null;
-//			}
-//		});
-//	}
-//
-//	@Override
-//	public User get(final String key) {
-//		return redisTemplate.execute(new RedisCallback<User>() {
-//			@SuppressWarnings("unchecked")
-//			@Override
-//			public User doInRedis(RedisConnection connection) throws DataAccessException {
-//				Jackson2JsonRedisSerializer<User> jackson2JsonRedisSerializer = (Jackson2JsonRedisSerializer<User>) redisTemplate
-//						.getValueSerializer();
-//				return jackson2JsonRedisSerializer.deserialize(connection.get(redisTemplate.getStringSerializer().serialize(key)));
-//			}
-//		});
-//	}
-//
-//	@Override
-//	public boolean exists(final String key) {
-//		return redisTemplate.execute(new RedisCallback<Boolean>() {
-//			@Override
-//			public Boolean doInRedis(RedisConnection connection) throws DataAccessException {
-//				return connection.exists(redisTemplate.getStringSerializer().serialize(key));
-//			}
-//		});
-//	}
-//
-//	@Override
-//	public void del(final String key) {
-//		redisTemplate.execute(new RedisCallback<Long>() {
-//			@Override
-//			public Long doInRedis(RedisConnection connection) throws DataAccessException {
-//				return connection.del(redisTemplate.getStringSerializer().serialize(key));
-//			}
-//		});
-//	}
+	@Override
+	public void set(final String key, final User member, final int exp) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public Object doInRedis(RedisConnection connection) throws DataAccessException {
+				Jackson2JsonRedisSerializer<User> jackson2JsonRedisSerializer = (Jackson2JsonRedisSerializer<User>) redisTemplate
+						.getValueSerializer();
+				connection.set(redisTemplate.getStringSerializer().serialize(key),
+						jackson2JsonRedisSerializer.serialize(member));
+				if (exp!=0) {
+					connection.expire(redisTemplate.getStringSerializer().serialize(key), exp);
+				}
+				return null;
+			}
+		});
+	}
+
+	@Override
+	public User get(final String key) {
+		return redisTemplate.execute(new RedisCallback<User>() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public User doInRedis(RedisConnection connection) throws DataAccessException {
+				Jackson2JsonRedisSerializer<User> jackson2JsonRedisSerializer = (Jackson2JsonRedisSerializer<User>) redisTemplate
+						.getValueSerializer();
+				return jackson2JsonRedisSerializer.deserialize(connection.get(redisTemplate.getStringSerializer().serialize(key)));
+			}
+		});
+	}
+
+	@Override
+	public boolean exists(final String key) {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection connection) throws DataAccessException {
+				return connection.exists(redisTemplate.getStringSerializer().serialize(key));
+			}
+		});
+	}
+
+	@Override
+	public void del(final String key) {
+		redisTemplate.execute(new RedisCallback<Long>() {
+			@Override
+			public Long doInRedis(RedisConnection connection) throws DataAccessException {
+				return connection.del(redisTemplate.getStringSerializer().serialize(key));
+			}
+		});
+	}
 
 	
 	@Override
@@ -167,9 +176,9 @@ public class UserCacheServiceImpl implements UserCacheService {
 			    cal.set(Calendar.HOUR, 0);    
 			    //cal.getTime();    
 			    long unixTime=cal.getTimeInMillis();
-			    		
+				//设置有效期到明天0时0分0秒
 				connection.expireAt(redisTemplateInt.getStringSerializer().serialize(numkey), 
-						unixTime);//设置有效期到明天0时0分0秒
+						unixTime);
 				
 				return null;
 			}

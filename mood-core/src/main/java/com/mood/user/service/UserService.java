@@ -10,6 +10,12 @@ import com.mood.entity.user.User;
  */
 public interface UserService extends BaseService<User> {
 
+    /**
+     * fetch data by rule id
+     *
+     * @param username rule id
+     * @return Result<XxxxDO>
+     */
     public User selectByUsername(String username);
 
 //    public int insert(User user);

@@ -6,6 +6,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
+/**
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 public class Digests {
 
     private static final String HEX_NUMS_STR="0123456789ABCDEF";

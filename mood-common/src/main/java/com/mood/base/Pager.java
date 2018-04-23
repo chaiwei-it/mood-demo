@@ -7,19 +7,30 @@ import net.sf.json.JSONObject;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 应用模块
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 @Data
 public class Pager<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer pageIndex;// 页码
-	private Integer pageSize;// 每页显示记录数
-	private Integer maxPages=0;// 总页数
-	private Long total;// 总记录数
+	// 页码
+	private Integer pageIndex;
+	// 每页显示记录数
+	private Integer pageSize;
+	// 总页数
+	private Integer maxPages=0;
+	// 总记录数
+	private Long total;
 	private Integer startIndex;
 	private List<T> data;
-	private JSONObject params; //条件传递
-	private String orderBy;//排序
+	//条件传递
+	private JSONObject params;
+	//排序
+	private String orderBy;
 
 	public Pager(Integer pageIndex, Integer pageSize, Integer total, List<T> data) {
 		this.pageIndex = pageIndex;
@@ -106,56 +117,15 @@ public class Pager<T> implements Serializable {
 		return this;
 	}
 
-//	public Integer getStartIndex() {
-//		return startIndex;
-//	}
-//
-//	public Integer getMaxPages() {
-//		return maxPages;
-//	}
-//
-//	public void setMaxPages(Integer maxPages) {
-//		this.maxPages = maxPages;
-//	}
-//
-//	public Integer getTotal() {
-//		return total;
-//	}
-//
-//	public void setTotal(Integer total) {
-//		this.total = total;
-//	}
-//
-//	public List<T> getData() {
-//		return data;
-//	}
-//
-//	public void setData(List<T> data) {
-//		this.data = data;
-//	}
-//
 	@JsonIgnore
 	public JSONObject getParams() {
 		return params;
 	}
-//
-//	public void setParams(JSONObject params) {
-//		this.params = params;
-//	}
-//
-//	public void setOrderBy(String orderBy) {
-//		this.orderBy = orderBy;
-//	}
-//
+
 	@JsonIgnore
 	public String getOrderBy() {
 		return orderBy;
 
 	}
-
-//	public void setErrorEnum(ErrorEnum errorEnum) {
-//		super.code =  errorEnum.getCode();
-//		super.msg = errorEnum.getMsg();
-//	}
 	
 }

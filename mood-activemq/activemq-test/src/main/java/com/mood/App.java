@@ -15,11 +15,6 @@ import org.springframework.jms.annotation.EnableJms;
 @EnableJms
 public class App {
 
-//    @Bean
-//    public Queue queue() {
-//        return new ActiveMQQueue("sample.queue");
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }

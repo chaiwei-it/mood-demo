@@ -12,15 +12,51 @@ import java.util.List;
  */
 public interface BaseService<T> {
 
+    /**
+     * fetch data by rule id
+     *
+     * @param t rule id
+     * @return Result<XxxxDO>
+     */
     public int insert(T t);
 
+    /**
+     * fetch data by rule id
+     *
+     * @param t rule id
+     * @return Result<XxxxDO>
+     */
     public int update(T t);
 
+    /**
+     * fetch data by rule id
+     *
+     * @param id rule id
+     * @return Result<XxxxDO>
+     */
     public int deleteById(String id);
 
+    /**
+     * fetch data by rule id
+     *
+     * @param id rule id
+     * @return Result<XxxxDO>
+     */
     public T selectById(String id);
 
+    /**
+     * fetch data by rule id
+     *
+     * @param param rule id
+     * @return Result<XxxxDO>
+     */
     public List<T> selectAll(JSONObject param);
 
+    /**
+     * fetch data by rule id
+     *
+     * @param pager rule id
+     * @return Result<XxxxDO>
+     */
     public Pager<T> selectPager(Pager pager);
 }
