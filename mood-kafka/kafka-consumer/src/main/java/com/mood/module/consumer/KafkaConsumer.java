@@ -15,7 +15,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 @EnableKafka
 public class KafkaConsumer {
 
-    @KafkaListener(topics = {"test"})
+    @KafkaListener(topics = {"test2"})
     public void consumer(String message){
         System.out.println("consumer监控者1接收到" + message);
 //        try {

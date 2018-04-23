@@ -95,7 +95,7 @@ public class TestApi extends BaseController {
     public ResponseEntity<ModelMap> list(@RequestParam(value = "userName", required = false, defaultValue = "") String userName,
                            ModelMap modelMap, HttpServletRequest request){
         JSONObject param = new JSONObject();
-        if(!userName.equals("")){
+        if(!"".equals(userName)){
             param.put("userName",userName);
         }
         List<User> list = userService.selectAll(param);
@@ -116,7 +116,7 @@ public class TestApi extends BaseController {
                                           ModelMap modelMap, HttpServletRequest request){
         Pager<User> pager = new Pager<User>(pageIndex, pageSize);
         JSONObject param = new JSONObject();
-        if(userName.equals("")){
+        if("".equals(userName)){
             param.put("userName",userName);
         }
         pager.setParams(param);

@@ -26,13 +26,13 @@ public class BaseController {
 	private CacheService simpleCacheService;
 
 
-	public static final String project_id = "640FAAA324A25C3AE41B9D9A6658DAD2";
+//	public static final String project_id = "640FAAA324A25C3AE41B9D9A6658DAD2";
 
-	public static final String role_admin_name = "ROLE_ADMIN";
+//	public static final String role_admin_name = "ROLE_ADMIN";
 
 	public User getLoginUser(HttpServletRequest request) {
-		String access_token = request.getParameter("access_token");
-		User member = (User)simpleCacheService.get(OauthContants.ACCESS_TOKEN + access_token.toString());
+		String accessToken = request.getParameter("access_token");
+		User member = (User)simpleCacheService.get(OauthContants.ACCESS_TOKEN + accessToken.toString());
 
 		return member;
 	}

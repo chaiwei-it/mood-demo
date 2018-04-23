@@ -15,14 +15,14 @@ import org.springframework.kafka.annotation.KafkaListener;
 @EnableKafka
 public class KafkaConsumer {
 
-//    @KafkaListener(topics = {"test"})
-//    public void consumer(String message){
-//        System.out.println("producer监控者1接收到" + message);
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @KafkaListener(topics = {"test2"})
+    public void consumer(String message){
+        System.out.println("producer监控者1接收到" + message);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

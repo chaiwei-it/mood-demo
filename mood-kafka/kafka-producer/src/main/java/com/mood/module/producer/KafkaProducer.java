@@ -26,6 +26,6 @@ public class KafkaProducer {
     @Scheduled(fixedRate = 1000)
     public void send(){
         String message = UUID.randomUUID().toString();
-        kafkaTemplate.send("test", new Date().toString());
+        kafkaTemplate.send("test2", new Date().toString());
     }
 }

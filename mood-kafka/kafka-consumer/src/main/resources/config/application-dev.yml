@@ -19,11 +19,11 @@ spring:
     consumer:
       bootstrap-servers: 192.168.31.231:9092
       group-id: foo2
-#      auto-offset-reset: earliest
-#      enable-auto-commit: true
-#      auto-commit-interval: 100
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 #      max-partition-fetch-bytes: 2
 #      max-poll-records: 10
 

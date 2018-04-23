@@ -6,7 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * 日期工具类
+ * @author chaiwei
+ * @time 2018-01-07 下午08:00
+ */
 public class DateUtil {
 	 private static String ymdhms = "yyyy-MM-dd HH:mm:ss";    
      private static String ymd = "yyyy-MM-dd";    
@@ -33,23 +37,27 @@ public class DateUtil {
       * 格式：2014-12-02 10:38:53  
       * @return String  
       */  
-     public static String getCurrentTime() {    
-         return yyyyMMddHHmmss.format(new Date());    
-     }    
+     public static String getCurrentTime() {
+         synchronized(yyyyMMddHHmmss){
+             return yyyyMMddHHmmss.format(new Date());
+         }
+     }
      /**  
       * 可以获取昨天的日期  
       * 格式：2014-12-01  
       * @return String  
       */  
      public static String getYesterdayYYYYMMDD() {    
-         Date date = new Date(System.currentTimeMillis() - DATEMM * 1000L);    
-         String str = yyyyMMdd.format(date);    
-         try {    
-             date = yyyyMMddHHmmss.parse(str + " 00:00:00");    
-             return yyyyMMdd.format(date);    
-         } catch (ParseException e) {    
-             e.printStackTrace();    
-         }    
+         Date date = new Date(System.currentTimeMillis() - DATEMM * 1000L);
+         synchronized(yyyyMMdd) {
+             String str = yyyyMMdd.format(date);
+             try {
+                 date = yyyyMMddHHmmss.parse(str + " 00:00:00");
+                 return yyyyMMdd.format(date);
+             } catch (ParseException e) {
+                 e.printStackTrace();
+             }
+         }
          return "";    
      }    
      /**  
@@ -69,36 +77,46 @@ public class DateUtil {
       *获取当前的年、月、日  
       * @return String  
       */  
-     public static String getCurrentYear() {    
-         return yearSDF.format(new Date());    
-     }   
-     public static String getCurrentMonth() {    
-         return monthSDF.format(new Date());    
-     }   
-     public static String getCurrentDay() {    
-         return daySDF.format(new Date());    
-     }    
+     public static String getCurrentYear() {
+         synchronized(yearSDF){
+             return yearSDF.format(new Date());
+         }
+     }
+     public static String getCurrentMonth() {
+         synchronized(monthSDF){
+             return monthSDF.format(new Date());
+         }
+     }
+     public static String getCurrentDay() {
+         synchronized(daySDF){
+             return daySDF.format(new Date());
+         }
+     }
      /**  
       * 获取年月日 也就是当前时间  
       * 格式：2014-12-02  
       * @return String  
       */  
-     public static String getCurrentymd() {    
-         return ymdSDF.format(new Date());    
-     }    
+     public static String getCurrentymd() {
+         synchronized(ymdSDF){
+             return ymdSDF.format(new Date());
+         }
+     }
      /**  
       * 获取今天0点开始的秒数  
       * @return long  
       */  
      public static long getTimeNumberToday() {    
-         Date date = new Date();    
-         String str = yyyyMMdd.format(date);    
-         try {    
-             date = yyyyMMdd.parse(str);    
-             return date.getTime() / 1000L;    
-         } catch (ParseException e) {    
-             e.printStackTrace();    
-         }    
+         Date date = new Date();
+         synchronized(yyyyMMdd) {
+             String str = yyyyMMdd.format(date);
+             try {
+                 date = yyyyMMdd.parse(str);
+                 return date.getTime() / 1000L;
+             } catch (ParseException e) {
+                 e.printStackTrace();
+             }
+         }
          return 0L;    
      }    
      /**  
@@ -106,20 +124,22 @@ public class DateUtil {
       * 格式：20141202  
       * @return String  
       */  
-     public static String getTodateString() {    
-         String str = yyyyMMddHH_NOT_.format(new Date());    
-         return str;    
-     }   
+     public static String getTodateString() {
+         synchronized(yyyyMMddHH_NOT_){
+             return yyyyMMddHH_NOT_.format(new Date());
+         }
+     }
      /**  
       * 获取昨天的日期  
       * 格式：20141201  
       * @return String  
       */  
      public static String getYesterdayString() {    
-         Date date = new Date(System.currentTimeMillis() - DATEMM * 1000L);    
-         String str = yyyyMMddHH_NOT_.format(date);    
-         return str;    
-     }    
+         Date date = new Date(System.currentTimeMillis() - DATEMM * 1000L);
+         synchronized(yyyyMMddHH_NOT_){
+             return yyyyMMddHH_NOT_.format(date);
+         }
+     }
      /**    
       * 获得昨天零点    
       *     
@@ -146,7 +166,8 @@ public class DateUtil {
          SimpleDateFormat sdf = new SimpleDateFormat(format);    
          // 前面的lSysTime是秒数，先乘1000得到毫秒数，再转为java.util.Date类型    
          Date dt2 = new Date(date * 1000L);
-         String sDateTime = sdf.format(dt2); // 得到精确到秒的表示：08/31/2006 21:08:00
+         // 得到精确到秒的表示：08/31/2006 21:08:00
+         String sDateTime = sdf.format(dt2);
          return sDateTime;
      }
 
@@ -291,19 +312,22 @@ public class DateUtil {
       *            给定的时间
       * @param interval
       *            间隔时间的毫秒数；计算方式 ：n(天)*24(小时)*60(分钟)*60(秒)(类型)
-      * @param format_Date_Sign
+      * @param formatDateSign
       *            输出日期的格式；如yyyy-MM-dd、yyyyMMdd等；
       */
      public static String givedTimeToBefer(String givedTime, long interval,
-             String format_Date_Sign) {
+             String formatDateSign) {
          String tomorrow = null;
          try {
-             SimpleDateFormat sdf = new SimpleDateFormat(format_Date_Sign);
+             SimpleDateFormat sdf = new SimpleDateFormat(formatDateSign);
              Date gDate = sdf.parse(givedTime);
-             long current = gDate.getTime(); // 将Calendar表示的时间转换成毫秒
-             long beforeOrAfter = current - interval * 1000L; // 将Calendar表示的时间转换成毫秒
-             Date date = new Date(beforeOrAfter); // 用timeTwo作参数构造date2
-             tomorrow = new SimpleDateFormat(format_Date_Sign).format(date);
+             // 将Calendar表示的时间转换成毫秒
+             long current = gDate.getTime();
+             // 将Calendar表示的时间转换成毫秒
+             long beforeOrAfter = current - interval * 1000L;
+             // 用timeTwo作参数构造date2
+             Date date = new Date(beforeOrAfter);
+             tomorrow = new SimpleDateFormat(formatDateSign).format(date);
          } catch (ParseException e) {
              e.printStackTrace();
          }
@@ -346,10 +370,11 @@ public class DateUtil {
       */
      public static Map<String, String> getTwoDay(String endTime,
              String beginTime, boolean isEndTime) {
-         Map<String, String> result = new HashMap<String, String>();
-         if ((endTime == null || endTime.equals("") || (beginTime == null || beginTime
-                 .equals(""))))
+         Map<String, String> result = new HashMap<String, String>(16);
+         if ((endTime == null || "".equals(endTime) ||
+                 (beginTime == null || "".equals(beginTime)))){
              return null;
+         }
          try {
              Date date = ymdSDF.parse(endTime);
              endTime = ymdSDF.format(date);
@@ -375,10 +400,11 @@ public class DateUtil {
       */
      public static Integer getTwoDayInterval(String endTime, String beginTime,
              boolean isEndTime) {
-         if ((endTime == null || endTime.equals("") || (beginTime == null || beginTime
-                 .equals(""))))
+         if ((endTime == null || "".equals(endTime) ||
+                 (beginTime == null || "".equals(beginTime)))){
              return 0;
-         long day = 0l;
+         }
+         long day = 0L;
          try {
              Date date = ymdSDF.parse(endTime);
              endTime = ymdSDF.format(date);
@@ -400,11 +426,12 @@ public class DateUtil {
       */    
      public static Map<String, String> getDate(String endTime, Integer interval,    
              boolean isEndTime) {    
-         Map<String, String> result = new HashMap<String, String>();    
+         Map<String, String> result = new HashMap<String, String>(16);
          if (interval == 0 || isEndTime) {    
-             if (isEndTime)    
-                 result.put(endTime, endTime);    
-         }    
+             if (isEndTime)  {
+                 result.put(endTime, endTime);
+             }
+         }
          if (interval > 0) {    
              int begin = 0;    
              for (int i = begin; i < interval; i++) {    

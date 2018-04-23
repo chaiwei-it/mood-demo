@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
         return userDao.selectPager(pager);
     }
 
+    @Override
     public User selectByUsername(String username){
         JSONObject param = new JSONObject();
         param.put("username", username);

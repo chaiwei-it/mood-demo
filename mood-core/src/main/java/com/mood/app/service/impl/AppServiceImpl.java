@@ -26,6 +26,7 @@ public class AppServiceImpl extends BaseServiceImpl<App> implements AppService {
         return appDao.selectAll(param);
     }
 
+    @Override
     public App selectById(String id){
         return appDao.selectById(id);
     }

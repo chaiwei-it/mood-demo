@@ -279,7 +279,7 @@ public class StringDemo {
 
 
     //将数组转换为List
-    private static void ArrayToList(String[] str){
+    private static void arrayToList(String[] str){
         System.out.println(Arrays.asList(str) + " 长度:" + str.length);
     }
 

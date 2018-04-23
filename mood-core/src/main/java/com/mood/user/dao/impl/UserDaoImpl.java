@@ -59,6 +59,7 @@ public class UserDaoImpl implements UserDao {
         return userMapper.selectByExample(example);
     }
 
+    @Override
     public Pager<User> selectPager(Pager pager){
         Example example = new Example(User.class);
         Example.Criteria criteria = example.createCriteria();
