@@ -7,13 +7,25 @@ package com.mood.common;
  */
 public class UserContants {
 
-    //登录次数的缓存标识
+    /**
+     *
+     * 登录次数的缓存标识
+     *
+     */
     public static String LOGINNUMBER = "login_number";
 
-    //登录次数的缓存标识
+    /**
+     *
+     * 登录次数的缓存标识
+     *
+     */
     public static String LOGINSTATUS = "login_STATUS";
 
-    //最大错误登录次数
+    /**
+     *
+     * 最大错误登录次数
+     *
+     */
     public static Integer LOGINERRORNUMBER = 3;
 
     public static Integer STOPSTATUS = 2;

@@ -28,7 +28,7 @@ public class Producer {
 
     int num = 1;
 
-    @Scheduled(fixedDelay=2000)//每3s执行1次
+    @Scheduled(fixedDelay=2000)
     public void send() {
 //        int num = 1;
         this.jmsMessagingTemplate.convertAndSend(this.queue, "hi,activeMQ" + num);

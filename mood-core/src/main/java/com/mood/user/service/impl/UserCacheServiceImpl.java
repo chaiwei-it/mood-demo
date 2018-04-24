@@ -30,19 +30,35 @@ public class UserCacheServiceImpl implements UserCacheService {
 	@Autowired
 	private RedisTemplate<String, Long> redisTemplateLong;
 
-	//手机验证码前缀
+	/**
+	 *
+	 * 手机验证码前缀
+	 *
+	 */
 	@Value("${phonecodePre}")
 	private String phonecodePre;
 
-	//验证码有效时间20分
+	/**
+	 *
+	 * 验证码有效时间20分
+	 *
+	 */
 	@Value("${phonecodeExpSeconds}")
 	private String phonecodeExpSeconds;
 
-	//手机获取验证码次数前缀
+	/**
+	 *
+	 * 手机获取验证码次数前缀
+	 *
+	 */
 	@Value("${phonenumPre}")
 	private String phonenumPre;
 
-	//手机验证码获取时间前缀
+	/**
+	 *
+	 * 手机验证码获取时间前缀
+	 *
+	 */
 	@Value("${phonecodeTime}")
 	private String phonecodeTime;
 	

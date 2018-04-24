@@ -278,12 +278,20 @@ public class StringDemo {
 //    }
 
 
-    //将数组转换为List
+    /**
+     *
+     * 将数组转换为List
+     *
+     */
     private static void arrayToList(String[] str){
         System.out.println(Arrays.asList(str) + " 长度:" + str.length);
     }
 
-    //获得集合数据
+    /**
+     *
+     * 获得集合数据
+     *
+     */
     private static List getListData(){
         List list = new ArrayList();
         list.add("你好");
@@ -292,7 +300,11 @@ public class StringDemo {
         list.add("大家好");
         return list;
     }
-    //获得数组数据
+    /**
+     *
+     * 获得数组数据
+     *
+     */
     private static String[] getArrayData(){
         return (String[]) getListData().toArray(new String[0]);
     }

@@ -371,8 +371,9 @@ public class DateUtil {
      public static Map<String, String> getTwoDay(String endTime,
              String beginTime, boolean isEndTime) {
          Map<String, String> result = new HashMap<String, String>(16);
-         if ((endTime == null || "".equals(endTime) ||
-                 (beginTime == null || "".equals(beginTime)))){
+         Boolean isLogic = (endTime == null || "".equals(endTime) ||
+                 (beginTime == null || "".equals(beginTime)));
+         if (isLogic){
              return null;
          }
          try {
@@ -400,8 +401,9 @@ public class DateUtil {
       */
      public static Integer getTwoDayInterval(String endTime, String beginTime,
              boolean isEndTime) {
-         if ((endTime == null || "".equals(endTime) ||
-                 (beginTime == null || "".equals(beginTime)))){
+         Boolean isLogic = (endTime == null || "".equals(endTime) ||
+                 (beginTime == null || "".equals(beginTime)));
+         if (isLogic){
              return 0;
          }
          long day = 0L;

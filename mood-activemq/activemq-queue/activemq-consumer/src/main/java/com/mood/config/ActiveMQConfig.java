@@ -19,7 +19,7 @@ import javax.jms.Topic;
  * @time 2018-01-14 10:17
  */
 @Configuration
-public class ActiveMQConfig {
+public class ActivemqConfig {
     @Bean
     public Queue queue(){
         return new ActiveMQQueue("sample.queue");

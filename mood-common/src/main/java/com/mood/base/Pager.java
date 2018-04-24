@@ -17,19 +17,43 @@ public class Pager<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	// 页码
+	/**
+	 *
+	 * 页码
+	 *
+	 */
 	private Integer pageIndex;
-	// 每页显示记录数
+	/**
+	 *
+	 * 每页显示记录数
+	 *
+	 */
 	private Integer pageSize;
-	// 总页数
+	/**
+	 *
+	 * 总页数
+	 *
+	 */
 	private Integer maxPages=0;
-	// 总记录数
+	/**
+	 *
+	 * 总记录数
+	 *
+	 */
 	private Long total;
 	private Integer startIndex;
 	private List<T> data;
-	//条件传递
+	/**
+	 *
+	 * 条件传递
+	 *
+	 */
 	private JSONObject params;
-	//排序
+	/**
+	 *
+	 * 排序
+	 *
+	 */
 	private String orderBy;
 
 	public Pager(Integer pageIndex, Integer pageSize, Integer total, List<T> data) {
