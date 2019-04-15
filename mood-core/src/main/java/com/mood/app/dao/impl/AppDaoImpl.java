@@ -39,7 +39,7 @@ public class AppDaoImpl implements AppDao {
 
     @Override
     public App selectById(String id) {
-        return null;
+        return appMapper.selectByPrimaryKey(id);
     }
 
     @Override

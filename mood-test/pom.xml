@@ -18,6 +18,8 @@
         <module>test-jello</module>
         <module>test-vue</module>
         <module>test-kafka</module>
+        <module>test-current</module>
+        <module>test-demo</module>
     </modules>
 
     <dependencies>
